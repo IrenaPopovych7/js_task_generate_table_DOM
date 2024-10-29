@@ -355,6 +355,48 @@ const people = [
 ];
 
 // eslint-disable-next-line no-console
-console.log(people); // you can remove it
 
 // write your code here
+
+// Array of people with detailed information
+const calculateCentury = (year) => {
+  return Math.ceil(year / 100);
+};
+
+const dashboard = document.getElementsByClassName('dashboard')[0];
+
+people.forEach((el) => {
+  const tr = document.createElement('tr');
+
+  const nameCell = document.createElement('td');
+
+  nameCell.textContent = el.name;
+  tr.appendChild(nameCell);
+
+  const genderCell = document.createElement('td');
+
+  genderCell.textContent = el.sex === 'm' ? 'Male' : 'Female';
+  tr.appendChild(genderCell);
+
+  const bornCell = document.createElement('td');
+
+  bornCell.textContent = el.born;
+  tr.appendChild(bornCell);
+
+  const diedCell = document.createElement('td');
+
+  diedCell.textContent = el.died;
+  tr.appendChild(diedCell);
+
+  const ageCell = document.createElement('td');
+
+  ageCell.textContent = el.died - el.born;
+  tr.appendChild(ageCell);
+
+  const centuryCell = document.createElement('td');
+
+  centuryCell.textContent = calculateCentury(el.died);
+  tr.appendChild(centuryCell);
+
+  dashboard.appendChild(tr);
+});
